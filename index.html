@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DMD</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body style="cursor: auto">
+    <div class="tavolo">
+      <div
+        id="proviamolo"
+        style="height: fit-content; width: fit-content"
+      ></div>
+      <div id="mazzo-div">
+        <img
+          id="mazzo"
+          style="height: 150px; width: 108"
+          src="resources/Tavola disegno 1.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+  </body>
+  <script>
+    var startIndex = Math.floor(Math.random() * (6 - 2)) + 2;
+    var rotation = 0;
+
+    const card = document.createElement("img");
+    card.src = `./resources/Tavola disegno ${startIndex}.jpg`;
+    card.classList.add("card");
+    card.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      card.style.transform = `rotate(${(rotation = rotation - 90)}deg) `;
+    });
+
+    document.querySelector("#proviamolo").appendChild(card);
+  </script>
+  <script>
+    const mazzo = document.querySelector("#mazzo");
+    function index() {
+      var a = Math.floor(Math.random() * (50 - 6)) + 6;
+      return a;
+    }
+
+    function spawnCard(event) {
+      const card = document.createElement("img");
+      card.src = `./resources/Tavola disegno ${index()}.jpg`;
+      card.classList.add("card");
+      card.style = "position: relative";
+      $(function () {
+        $(".card").draggable();
+      });
+      card.addEventListener("contextmenu", (e) => {
+        card.style.transform = `rotate(${(rotation = rotation - 90)}deg) `;
+        e.preventDefault();
+      });
+
+      document.querySelector("#proviamolo").appendChild(card);
+    }
+
+    mazzo.addEventListener("click", spawnCard);
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+</html>
