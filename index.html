@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DMD</title>
     <link rel="stylesheet" href="index.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
   </head>
   <body style="cursor: auto">
     <div class="tavolo">
@@ -15,10 +17,44 @@
       <div id="mazzo-div">
         <img
           id="mazzo"
-          style="height: 150px; width: 108"
+          style="height: 220px; width: 175px"
           src="resources/Tavola disegno 1.jpg"
           alt=""
         />
+      </div>
+      <div class="kingCard">
+        <div>
+          <img
+            class="RE"
+            id="cuori"
+            src="./resources/Tavola disegno 52.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="RE"
+            id="picche"
+            src="./resources/Tavola disegno 53.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="RE"
+            id="quadri"
+            src="./resources/Tavola disegno 51.jpg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            class="RE"
+            id="fiori"
+            src="./resources/Tavola disegno 50.jpg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   </body>
@@ -37,9 +73,14 @@
     document.querySelector("#proviamolo").appendChild(card);
   </script>
   <script>
+    var listaCarte = [];
     const mazzo = document.querySelector("#mazzo");
+
     function index() {
-      var a = Math.floor(Math.random() * (50 - 6)) + 6;
+      do {
+        var a = Math.floor(Math.random() * (50 - 6)) + 6;
+      } while (listaCarte.includes(a));
+      listaCarte.push(a);
       return a;
     }
 
@@ -61,7 +102,48 @@
 
     mazzo.addEventListener("click", spawnCard);
   </script>
-
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+  <script>
+    var rotationf = 0;
+    document.querySelector("#fiori").addEventListener("contextmenu", (f) => {
+      document.querySelector("#fiori").style.transform = `rotate(${(rotationf =
+        rotationf - 90)}deg) `;
+      f.preventDefault();
+    });
+    $(function () {
+      $("#fiori").draggable();
+    });
+  </script>
+  <script>
+    var rotationc = 0;
+    document.querySelector("#cuori").addEventListener("contextmenu", (c) => {
+      document.querySelector("#cuori").style.transform = `rotate(${(rotationc =
+        rotationc - 90)}deg) `;
+      c.preventDefault();
+    });
+    $(function () {
+      $("#cuori").draggable();
+    });
+  </script>
+  <script>
+    var rotationp = 0;
+    document.querySelector("#picche").addEventListener("contextmenu", (p) => {
+      document.querySelector("#picche").style.transform = `rotate(${(rotationp =
+        rotationp - 90)}deg) `;
+      p.preventDefault();
+    });
+    $(function () {
+      $("#picche").draggable();
+    });
+  </script>
+  <script>
+    var rotationq = 0;
+    document.querySelector("#quadri").addEventListener("contextmenu", (q) => {
+      document.querySelector("#quadri").style.transform = `rotate(${(rotationq =
+        rotationq - 90)}deg) `;
+      q.preventDefault();
+    });
+    $(function () {
+      $("#quadri").draggable();
+    });
+  </script>
 </html>

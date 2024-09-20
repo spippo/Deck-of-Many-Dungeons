@@ -10,14 +10,14 @@ body {
 }
 #mazzo-div {
   background-color: black;
-  height: 150px;
-  width: 108px;
-  position: relative;
-  top: 60%;
+  height: 220px;
+  width: 175px;
+  position: sticky;
+  top: 75%;
 }
 #mazzo {
-  height: 150px;
-  width: 108px;
+  height: 220px;
+  width: 175px;
 }
 .prova {
   width: 100px;
@@ -27,5 +27,36 @@ body {
   position: relative;
   width: 175px;
   height: 220px;
+  transform: rotate(0deg);
+}
+.card {
+  position: relative;
+  width: 175px;
+  height: 220px;
+  transform: rotate(0deg);
+}
+.kingCard {
+  position: absolute;
+  left: 80%;
+  top: 50%;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.RE {
+  position: relative;
+  width: 175px;
+  height: 220px;
+  transform: rotate(0deg);
+}
+#fiori {
+  transform: rotate(0deg);
+}
+#picche {
+  transform: rotate(0deg);
+}
+#quadri {
+  transform: rotate(0deg);
+}
+#cuori {
   transform: rotate(0deg);
 }
